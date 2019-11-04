@@ -16,6 +16,8 @@ fetchData('https://www.thecocktaildb.com/api/json/v1/1/random.php')
 fetchData('https://www.thecocktaildb.com/api/json/v1/1/random.php')
     .then(data => getImage(data.drinks[0].strDrinkThumb))
 
+fetchData('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+    .then(data => getIngredients(data.drinks[0]))
 
 // base functions
 
@@ -26,10 +28,19 @@ function getImage(data) {
     image.innerHTML = html;
 }
 
-function getInstructions (data) {
-    console.log(data);
+function getInstructions(data) {
     const info = `
         <p>${data}</p>
     `;
     instructions.innerHTML = info;
+}
+
+function getIngredients(data) {
+    const entries = Object.entries(data)
+    for(let i = 21; i < 35; i++) {
+        if(entries[i][1] === null) {
+            break;
+        }
+        console.log(entries[i][1]);
+    }
 }
