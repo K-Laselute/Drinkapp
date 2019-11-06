@@ -37,6 +37,12 @@ function getInstructions(data) {
 
 function getIngredients(data) {
     const entries = Object.entries(data)
+    for (let j = 36; j < 50; j++) {
+        if (entries[j][1] === null) {
+            break;
+        }
+        console.log(entries[j][1]);
+    }
     for(let i = 21; i < 35; i++) {
         if(entries[i][1] === null) {
             break;
