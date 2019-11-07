@@ -1,6 +1,7 @@
 const drinkButton = document.getElementById('randomButton');
 const image = document.getElementById('drinkImage');
-const instructions = document.getElementById('instructions')
+const instructions = document.getElementById('instructions');
+const ingredientData = document.getElementById('ingredientData');
 
 
 // reusable fetch function
@@ -36,17 +37,15 @@ function getInstructions(data) {
 }
 
 function getIngredients(data) {
-    const entries = Object.entries(data)
-    for (let j = 36; j < 50; j++) {
-        if (entries[j][1] === null) {
-            break;
-        }
-        console.log(entries[j][1]);
-    }
+    const entries = Object.entries(data);
+    let ing = `<tr>`
     for(let i = 21; i < 35; i++) {
         if(entries[i][1] === null) {
             break;
         }
-        console.log(entries[i][1]);
+    ing += `<td>${entries[i][1]}</td>
+        </tr>`;
+    console.log(entries[i][1])
     }
+    ingredientData.innerHTML = ing;
 }
