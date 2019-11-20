@@ -45,23 +45,25 @@ function getInstructions(data) {
 
 function getIngredients(data) {
     const entries = Object.entries(data);
-    let ing = `<tr>`
+    let tableHTML = `<tr>`;
+    let ing = [];
     let mea = [];
+    for (let i = 21; i < 35; i++) {
+        if (entries[i][1] === null) {
+            break;
+        }
+        ing.push(entries[i][1])
+    }
     for(let j = 36; j < 50; j++) {
         if(entries[j][1] === null) {
             break;
         }
     mea.push(entries[j][1]);
-    console.log(mea);
-}
-    for(let i = 21; i < 35; i++) {
-        if(entries[i][1] === null) {
-            break;
-        }
-    ing += `<td>${entries[i][1]}</td>
-        </tr>`;
-    console.log(entries[i][1])
     }
-    ingredientData.innerHTML = ing;
+    for(let k = 0; k < mea.length; k++) {
+        tableHTML += `<td>${mea[k]} ${ing[k]}</td>
+        </tr>`;
+    }
+    ingredientData.innerHTML = tableHTML;
     console.log(entries);
 }
