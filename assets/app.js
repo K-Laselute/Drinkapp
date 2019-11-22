@@ -13,6 +13,7 @@ drinkButton.addEventListener('click', () => {
         getName(data.drinks[0].strDrink)
     })
     hideShow();
+    drinkButton.innerText = "Something else";
 })
 
 
@@ -23,15 +24,8 @@ function fetchData(url) {
         .then(response => response.json())
 }
 
-// fetchData('https://www.thecocktaildb.com/api/json/v1/1/random.php')
-//     .then(data => {
-//         getInstructions(data.drinks[0].strInstructions);
-//         getImage(data.drinks[0].strDrinkThumb);
-//         getIngredients(data.drinks[0]);
-//         getName(data.drinks[0].strDrink)
-//     })
-
 // base functions
+
 
 function hideShow() {
     let table = document.getElementsByTagName('table');
